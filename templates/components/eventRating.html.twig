@@ -1,0 +1,15 @@
+<div class="rating">
+    {% set ratingState = event|eventRatingState %}
+    <button class="btn btn-sm p-0 rating-up {{ ratingState > 0 ? '' : 'disabled' }}">
+        <span class="glyphicon glyphicon-thumbs-up text-success" aria-hidden="true" title="нравится"></span>
+    </button>
+    <span class="rating-value small"
+          data-event-id="{{ event.id }}"
+          data-rating-state="{{ ratingState }}"
+    >
+        {{ event.rating }}
+    </span>
+    <button class="btn btn-sm p-0 rating-down {{ ratingState < 0 ? '' : 'disabled' }}">
+        <span class="glyphicon glyphicon-thumbs-down text-danger" aria-hidden="true" title="не нравится"></span>
+    </button>
+</div>

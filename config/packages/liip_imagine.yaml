@@ -1,0 +1,28 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+
+    filter_sets:
+        cache: ~
+        # the name of the "filter set"
+        event_image_100x100:
+            data_loader: form_event
+            # adjust the image quality to 75%
+            quality: 75
+            # list of transformations to apply (the "filters")
+            filters:
+                thumbnail: { size: [100, 100], mode: outbound }
+        event_image_150x150:
+            # adjust the image quality to 75%
+            quality: 75
+            # list of transformations to apply (the "filters")
+            filters:
+                thumbnail: { size: [150, 150], mode: outbound }
+
+    loaders:
+        form_event:
+            filesystem:
+                bundle_resources:
+                    enabled: true
+                data_root: "images/events" #where my originals files are stored

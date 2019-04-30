@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новость{% endblock %}
+
+{% block body %}
+    <div class="h3 mb-3 font-weight-normal">{{ event.title }}</div>
+
+    <div class="row container">
+        <div class="event-image-background text-center">
+            {% if event.imageName is not empty %}
+                <img class="event-image" src="{{ vich_uploader_asset(event, 'imageFile') }}"/>
+            {% endif %}
+        </div>
+        <div class="col">
+            <div class="text-secondary">
+                Дата публикации: {{ event.createdAt ? event.createdAt|date('H:i, d-m-Y') : '' }}
+            </div>
+            <div>{{ event.content }}</div>
+            <div class="mt-2">
+                {% include 'components/eventRating.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+    <a class="btn btn-secondary mt-2" href="{{ return }}">Назад к списку новостей</a>
+{% endblock %}

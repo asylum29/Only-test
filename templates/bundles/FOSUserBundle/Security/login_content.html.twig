@@ -1,0 +1,36 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <div class="h3 mb-3 font-weight-normal">Авторизация пользователя</div>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="inputUsername">Имя пользователя</label>
+        <input type="text" value="{{ last_username }}" name="_username" id="inputUsername"
+               class="form-control" placeholder="Введите своё имя пользователя" required="required" autofocus />
+    </div>
+
+    <div class="form-group">
+        <label for="inputPassword">Пароль</label>
+        <input type="password" name="_password" id="inputPassword"
+               class="form-control" placeholder="Введите свой пароль" required="required" />
+    </div>
+
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">запомнить меня</label>
+        </label>
+    </div>
+
+    <button class="btn btn-primary" type="submit" name="_submit">
+        Войти в систему
+    </button>
+</form>

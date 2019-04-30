@@ -1,3 +1,6 @@
 index:
     path: /
     controller: App\Controller\EventController::index
+fos_user_security_login:
+    path: /login
+    controller: App\Controller\Security\SecurityController::loginAction

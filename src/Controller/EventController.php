@@ -53,7 +53,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="event_show", methods={"GET"})
+     * @Route("/{id}", name="event_show", methods={"GET"}, requirements={"id":"\d+"})
      */
     public function show(Request $request, Event $event): Response
     {
@@ -107,7 +107,7 @@ class EventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirect($returnUrl);;
+            return $this->redirect($returnUrl);
         }
 
         return $this->render('event/edit.html.twig', [
